@@ -122,6 +122,41 @@ app.MapGet("/livro/buscar/{id}", ([FromRoute] int id,
     }
     return Results.Ok(livro);
 });
+ // Reservar Livro
+app.MapPost("/livro/reservar/{id}", ([FromRoute] int id, [FromBody] ReservaLivro reservaLivro,
+    [FromServices] AppDataContext ctx) =>
+{
+    Livro? livro = ctx.Livros.FirstOrDefault(l => l.Id == id);
+    if (livro == null)
+    {
+        return Results.NotFound("Livro não encontrado.");
+    }
 
+    if (livro.Reservado)
+    {
+        return Results.BadRequest("Livro já reservado.");
+    }
+
+    livro.ReservarLivro();
+    ctx.SaveChanges();
+
+    return Results.Created($"Livro '{livro.Titulo}' reservado com sucesso.", livro);
+});
+
+// Relatório de Estatísticas de Uso de Livros
+app.MapGet("/livro/estatisticas", ([FromServices] AppDataContext ctx) =>
+{
+    var estatisticas = ctx.Livros
+        .Select(l => new EstatisticasLivro
+        {
+            LivroId = l.Id,
+            Titulo = l.Titulo,
+            QuantidadeEmprestimos = ctx.Emprestimos.Count(e => e.LivroId == l.Id),
+            QuantidadeReservas = ctx.ReservasLivros.Count(r => r.LivroId == l.Id)
+        })
+        .ToList();
+
+    return Results.Ok(estatisticas);
+});
 app.Run();
 
