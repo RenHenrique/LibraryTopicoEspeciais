@@ -1,0 +1,57 @@
+@base_url = http://localhost:5292
+
+### Criar novo Usuario
+POST {{base_url}}/usuario/cadastrar
+Content-Type: application/json
+
+{
+    "nome": "Tiago",
+    "email" : "Teste@hotmail.com",
+    "senha" : "12345"
+}
+
+### Criar novo Livro
+
+POST {{base_url}}/livro/cadastrar
+Content-Type: application/json
+
+{
+    "titulo": "Super-homem",
+    "autor" : "Jeferson",
+    "editora" : "editoramestre"
+}
+
+### Resistrar novo Emprestimo
+
+POST {{base_url}}/emprestimo/cadastrar
+Content-Type: application/json
+
+{
+    "usuarioId": 1,
+    "livroId" : 2
+}
+
+### Registrar Devolução
+
+POST {{base_url}}/emprestimo/devolver
+Content-Type: application/json
+
+{
+    "emprestimoId": 1
+}
+
+### Remoção de um Livro
+DELETE {{base_url}}/livro/deletar/1
+
+### Alterar livro
+PUT {{base_url}}/livro/alterar/2
+Content-Type: application/json
+
+{
+    "titulo": "Super-mulher",
+    "autor" : "Jeferdaughter",
+    "editora" : "editoranaomestre"
+}
+
+### Busca de livro por Id
+GET {{base_url}}/livro/buscar/2
