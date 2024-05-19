@@ -1,54 +1,80 @@
-namespace ProjetoLivraria.Models;
+using System;
 
-public class Livro
+namespace ProjetoLivraria.Models
 {
-
-    public int Id { get; set; }
-
-    public string? Titulo { get; set; }
-
-    public string? Autor { get; set; }
-
-    public string? Editora { get; set; }
-
-    public bool Emprestimo { get; set; }
-
-    public Livro(){
-        Emprestimo = false;
-    }
-
-        public Livro(string titulo, string autor, string editora)
+    public class Livro
     {
-        Titulo = titulo;
-        Autor = autor;
-        Editora = editora;
-        Emprestimo = false;
-    }
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Autor { get; set; }
+        public string Editora { get; set; }
+        public bool Emprestimo { get; private set; }
+        public bool Reservado { get; private set; }
 
-
-    public void EmprestarLivro()
-    {
-        if (!Emprestimo)
-        {
-            Emprestimo = true;
-            Console.WriteLine($"Livro '{Titulo}' emprestado.");
-        }
-        else
-        {
-            Console.WriteLine($"O livro '{Titulo}' já está emprestado.");
-        }
-    }
-
-    public void DevolverLivro()
-    {
-        if (Emprestimo)
+        public Livro()
         {
             Emprestimo = false;
-            Console.WriteLine($"Livro '{Titulo}' devolvido.");
+            Reservado = false;
         }
-        else
+
+        public Livro(string titulo, string autor, string editora) : this()
         {
-            Console.WriteLine($"O livro '{Titulo}' não está emprestado.");
+            Titulo = titulo;
+            Autor = autor;
+            Editora = editora;
+        }
+
+        public void EmprestarLivro()
+        {
+            if (!Emprestimo)
+            {
+                Emprestimo = true;
+                Console.WriteLine($"Livro '{Titulo}' emprestado.");
+            }
+            else
+            {
+                Console.WriteLine($"O livro '{Titulo}' já está emprestado.");
+            }
+        }
+
+        public void DevolverLivro()
+        {
+            if (Emprestimo)
+            {
+                Emprestimo = false;
+                Console.WriteLine($"Livro '{Titulo}' devolvido.");
+            }
+            else
+            {
+                Console.WriteLine($"O livro '{Titulo}' não está emprestado.");
+            }
+        }
+
+        public void ReservarLivro()
+        {
+            if (!Reservado)
+            {
+                Reservado = true;
+                Console.WriteLine($"Livro '{Titulo}' reservado.");
+            }
+            else
+            {
+                Console.WriteLine($"O livro '{Titulo}' já está reservado.");
+            }
+        }
+
+        public void CancelarReservaLivro()
+        {
+            if (Reservado)
+            {
+                Reservado = false;
+                Console.WriteLine($"Reserva do livro '{Titulo}' cancelada.");
+            }
+            else
+            {
+                Console.WriteLine($"O livro '{Titulo}' não está reservado.");
+            }
         }
     }
 }
+
