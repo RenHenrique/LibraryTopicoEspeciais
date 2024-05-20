@@ -66,7 +66,7 @@ Content-Type: application/json
 }
 
 ### Estatísticas de Uso do Livro
-GET {{base_url}}/livro/estatisticas/2
+GET {{base_url}}/livro/estatisticas
 
  ### Relatório de Estatísticas de Uso e Reservas de Livros
 GET {{base_url}}/relatorio/estatisticas
