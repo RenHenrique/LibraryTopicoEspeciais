@@ -1,5 +1,3 @@
-using System.Linq;
-
 namespace ProjetoLivraria.Models
 {
     public class EstatisticasLivro
@@ -9,6 +7,7 @@ namespace ProjetoLivraria.Models
         public int QuantidadeEmprestimos { get; set; }
         public int QuantidadeReservas { get; set; }
 
+        // Construtor que recebe os parâmetros Livro e AppDataContext
         public EstatisticasLivro(Livro livro, AppDataContext context)
         {
             LivroId = livro.Id;

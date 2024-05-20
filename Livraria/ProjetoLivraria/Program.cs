@@ -27,9 +27,7 @@ app.MapPost("/livro/cadastrar", ([FromBody] Livro livro,
 app.MapPost("/emprestimo/cadastrar", ([FromBody] Emprestimo emprestimo,
     [FromServices] AppDataContext ctx) =>
 {
-
     Livro? livro = ctx.Livros.FirstOrDefault(l => l.Id == emprestimo.LivroId && !l.Emprestimo);
-
     Usuario? usuario = ctx.Usuarios.FirstOrDefault(u => u.Id == emprestimo.UsuarioId);
 
     if (livro != null && usuario != null && !livro.Emprestimo)
@@ -55,9 +53,7 @@ app.MapPost("/emprestimo/cadastrar", ([FromBody] Emprestimo emprestimo,
         }
 
         return Results.BadRequest();
-
     }
-
 });
 
 app.MapPost("/emprestimo/devolver", ([FromBody] Devolucao devolucao,
@@ -109,7 +105,6 @@ app.MapPut("/livro/alterar/{id}", ([FromRoute] int id,
     ctx.Livros.Update(livro);
     ctx.SaveChanges();
     return Results.Ok("Livro alterado!");
-
 });
 
 app.MapGet("/livro/buscar/{id}", ([FromRoute] int id,
@@ -122,7 +117,8 @@ app.MapGet("/livro/buscar/{id}", ([FromRoute] int id,
     }
     return Results.Ok(livro);
 });
- // Reservar Livro
+
+// Reservar Livro
 app.MapPost("/livro/reservar/{id}", ([FromRoute] int id, [FromBody] ReservaLivro reservaLivro,
     [FromServices] AppDataContext ctx) =>
 {
@@ -147,16 +143,10 @@ app.MapPost("/livro/reservar/{id}", ([FromRoute] int id, [FromBody] ReservaLivro
 app.MapGet("/livro/estatisticas", ([FromServices] AppDataContext ctx) =>
 {
     var estatisticas = ctx.Livros
-        .Select(l => new EstatisticasLivro
-        {
-            LivroId = l.Id,
-            Titulo = l.Titulo,
-            QuantidadeEmprestimos = ctx.Emprestimos.Count(e => e.LivroId == l.Id),
-            QuantidadeReservas = ctx.ReservasLivros.Count(r => r.LivroId == l.Id)
-        })
+        .Select(l => new EstatisticasLivro(l, ctx))
         .ToList();
 
     return Results.Ok(estatisticas);
 });
-app.Run();
 
+app.Run();
