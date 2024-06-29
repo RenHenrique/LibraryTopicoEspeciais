@@ -2534,19 +2534,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Italo\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Italo\\Desktop\\SistemaBiblioteca\\LibraryTopicoEspeciais\\Livraria\\ProjetoLivraria\\ProjetoLivraria.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\LibraryTopicoEspeciais\\Livraria\\ProjetoLivraria\\ProjetoLivraria.csproj",
       "projectName": "ProjetoLivraria",
-      "projectPath": "C:\\Users\\Italo\\Desktop\\SistemaBiblioteca\\LibraryTopicoEspeciais\\Livraria\\ProjetoLivraria\\ProjetoLivraria.csproj",
-      "packagesPath": "C:\\Users\\Italo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Italo\\Desktop\\SistemaBiblioteca\\LibraryTopicoEspeciais\\Livraria\\ProjetoLivraria\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\LibraryTopicoEspeciais\\Livraria\\ProjetoLivraria\\ProjetoLivraria.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\LibraryTopicoEspeciais\\Livraria\\ProjetoLivraria\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Italo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -2605,7 +2605,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
