@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css'; // Importa o arquivo CSS
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import BuscaLivro from './componets/buscar';
 import NovoLivro from './componets/novolivro';
@@ -47,33 +48,15 @@ const App: React.FC = () => {
         </nav>
 
         <Routes>
-          <Route path="/livro/buscar">
-            <BuscaLivro />
-          </Route>
-          <Route path="/livro/cadastrar">
-            <NovoLivro />
-          </Route>
-          <Route path="/emprestimo/cadastrar">
-            <NovoEmprestimo />
-          </Route>
-          <Route path="/emprestimo/devolver">
-            <DevolucaoLivro />
-          </Route>
-          <Route path="/livro/deletar">
-            <RemocaoLivro />
-          </Route>
-          <Route path="/livro/alterar">
-            <AlteracaoLivro />
-          </Route>
-          <Route path="/livro/reservar">
-            <ReservarLivro />
-          </Route>
-          <Route path="/livro/estatisticas">
-            <EstatisticasLivro livroId={2} /> {/* Exemplo de passagem de prop livroId */}
-          </Route>
-          <Route path="/relatorio/estatisticas">
-            <RelatorioEstatisticas />
-          </Route>
+          <Route path="/livro/buscar" element={<BuscaLivro />} />
+          <Route path="/livro/cadastrar" element={<NovoLivro />} />
+          <Route path="/emprestimo/cadastrar" element={<NovoEmprestimo />} />
+          <Route path="/emprestimo/devolver" element={<DevolucaoLivro />} />
+          <Route path="/livro/deletar" element={<RemocaoLivro />} />
+          <Route path="/livro/alterar" element={<AlteracaoLivro />} />
+          <Route path="/livro/reservar" element={<ReservarLivro />} />
+          <Route path="/livro/estatisticas" element={<EstatisticasLivro livroId={2} />} />
+          <Route path="/relatorio/estatisticas" element={<RelatorioEstatisticas />} />
         </Routes>
       </div>
     </Router>
